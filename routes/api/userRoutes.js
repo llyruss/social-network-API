@@ -81,9 +81,16 @@ router.put("/:userId/friends/:friendId", async (req, res) => {
 
 
 // // delete to remove a freiend from a users friend list
+router.put("/:userId/friendRemove/:friendId", async (req, res) => {
+    try {
+        const data = await User.findOneAndUpdate({_id: req.params.userId}, {$pull:{friends: req.params.friendId}}, {new: true})
+        res.json(data)
+    } catch(err) {
+        console.log(err);
+        res.status(400).json(err);
+    }
+})
 
-// router.delete("/:userId/friend/friendId", ({body}, res) => {
 
-// })
 
 module.exports = router
