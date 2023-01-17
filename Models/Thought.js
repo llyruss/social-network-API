@@ -16,10 +16,6 @@ const thoughtSchema = new Schema({
         type: Schema.Types.String,
         ref: "User"
     },
-    content: {
-        type: String,
-        maxLength: 500,
-    },
     reactions: [reactionSchema]
 })
 
